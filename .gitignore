@@ -1,0 +1,4 @@
+.last_pull
+.last_sync
+*.bak-*
+**/audit_queue.md

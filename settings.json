@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          { "type": "command", "command": "~/.claude/hooks/session-start.sh" }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          { "type": "command", "command": "~/.claude/hooks/graphify-sync.sh" }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "~/.claude/hooks/session-stop.sh" }
+        ]
+      }
+    ]
+  }
+}
