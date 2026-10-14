@@ -1,13 +1,13 @@
-# claude-global-config
+﻿# claude-global-config
 
 Claude Code 전역 설정(CLAUDE.md · hooks · skills)을 모든 PC에 동일하게 배포·자동 갱신.
 
 ## 새 PC 설치 (한 줄)
 ```
 # Linux / macOS
-curl -fsSL https://raw.githubusercontent.com/GITHUB_USER/claude-global-config/main/bootstrap.sh | bash
+curl -fsSL https://raw.githubusercontent.com/kumchyeo/claude-global-config/main/bootstrap.sh | bash
 # Windows PowerShell
-irm https://raw.githubusercontent.com/GITHUB_USER/claude-global-config/main/bootstrap.ps1 | iex
+irm https://raw.githubusercontent.com/kumchyeo/claude-global-config/main/bootstrap.ps1 | iex
 ```
 repo가 `~/.claude-config`에 clone되고 `~/.claude`에 설치됨 (Linux/mac: symlink, Windows: 복사).
 
@@ -26,4 +26,4 @@ SessionStart hook이 하루 1회 `git pull` → 변경 시 자동 재설치. `~/
 - `claude-desktop-project-instructions.md` Claude Desktop Project 지침용
 
 ## 최초 publish (현재 PC)
-`publish.cmd` 더블클릭 → GitHub private repo 생성·push·GITHUB_USER 자동 치환. (gh CLI 필요)
+`publish.cmd` 더블클릭 → GitHub private repo 생성·push·kumchyeo 자동 치환. (gh CLI 필요)
