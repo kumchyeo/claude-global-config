@@ -2,3 +2,9 @@
 .last_sync
 *.bak-*
 **/audit_queue.md
+# 최초 publish용, repo에 안 올림 (이메일 포함)
+publish.ps1
+publish.cmd
+install.cmd
+INSTALL.md
+make-public-and-push.cmd
