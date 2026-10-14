@@ -9,6 +9,11 @@ if (-not (git config user.email)) { git config user.email "wlsl3408@gmail.com"; 
 git add -A
 git commit -m "claude global config" 2>$null | Out-Null
 
+# PATH 갱신 (설치 직후 같은 창에서도 gh 찾도록) + 기본 설치 경로 보강
+$env:Path = [Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [Environment]::GetEnvironmentVariable("Path","User")
+foreach ($p in "$env:ProgramFiles\GitHub CLI", "$env:LOCALAPPDATA\Programs\GitHub CLI") {
+  if (Test-Path "$p\gh.exe") { $env:Path += ";$p" }
+}
 if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
   Write-Host "gh(GitHub CLI) 없음. winget install GitHub.cli 후 재실행하거나,"
   Write-Host "https://github.com/new 에서 private repo claude-global-config 생성 후:"
