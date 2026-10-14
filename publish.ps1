@@ -22,9 +22,15 @@ if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
   pause; exit 1
 }
 
-gh auth status 2>$null | Out-Null
-if ($LASTEXITCODE -ne 0) { gh auth login }
-$user = gh api user -q .login
+$ErrorActionPreference = "Continue"
+cmd /c "gh auth status >nul 2>&1"
+if ($LASTEXITCODE -ne 0) {
+  gh auth login --hostname github.com --git-protocol https --web
+  if ($LASTEXITCODE -ne 0) { Write-Host "GitHub 로그인 실패"; pause; exit 1 }
+}
+$ErrorActionPreference = "Stop"
+$user = (gh api user -q .login).Trim()
+if (-not $user) { Write-Host "GitHub 사용자 조회 실패"; pause; exit 1 }
 
 $hasOrigin = (git remote) -contains "origin"
 if (-not $hasOrigin) {
